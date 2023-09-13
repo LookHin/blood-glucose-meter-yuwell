@@ -4,6 +4,7 @@ import time
 
 from typing import Sequence
 from bleak import BleakClient, BleakScanner
+from bleak.backends.device import BLEDevice
 
 GLUCOSE_DEVICE_ADDRESS = "D0:03:XX:XX:1A:A9" # Change to your device address
 
