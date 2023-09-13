@@ -3,7 +3,7 @@
 ![Image](https://www.onlyme.dev/github/glucose-meter-yuwell/1.png?v=3)
 
 ### Caution
-The distance between the accu-chek meter and computer must be within 3 meters.
+The distance between the yuwell meter and computer must be within 3 meters.
 
 ### 0. Install library
 
