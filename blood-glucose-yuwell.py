@@ -9,6 +9,7 @@ import requests
 import time
 import platform
 
+from typing import Sequence
 from bleak import BleakClient, BleakScanner
 from datetime import datetime
 from requests.structures import CaseInsensitiveDict
@@ -39,7 +40,7 @@ async def receiveNotification():
         await client.stop_notify(GLUCOSE_MEASUREMENT_UUID)
 
 async def findBluetoothDevice():
-    devices = await BleakScanner.discover(timeout=1)
+    devices: Sequence[BLEDevice] = await BleakScanner.discover(timeout=1)
 
     for device in devices:
         if device.address == GLUCOSE_DEVICE_ADDRESS:

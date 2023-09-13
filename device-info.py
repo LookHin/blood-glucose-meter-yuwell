@@ -1,6 +1,8 @@
 import sys
 import asyncio
 import time
+
+from typing import Sequence
 from bleak import BleakClient, BleakScanner
 
 GLUCOSE_DEVICE_ADDRESS = "D0:03:XX:XX:1A:A9" # Change to your device address
@@ -27,7 +29,7 @@ async def getDeviceInfo(address):
     print("--------------------------------------------------\n")
 
 async def findBluetoothDevice():
-    devices = await BleakScanner.discover(timeout=1)
+    devices: Sequence[BLEDevice] = await BleakScanner.discover(timeout=1)
 
     for device in devices:
         if device.address == GLUCOSE_DEVICE_ADDRESS:

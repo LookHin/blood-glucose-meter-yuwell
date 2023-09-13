@@ -2,6 +2,9 @@
 
 ![Image](https://www.onlyme.dev/github/glucose-meter-yuwell/1.png?v=3)
 
+### Caution
+The distance between the accu-chek meter and computer must be within 3 meters.
+
 ### 0. Install library
 
 ```
@@ -25,10 +28,11 @@ import sys
 import asyncio
 import time
 
+from typing import Sequence
 from bleak import BleakScanner
 
 async def findBluetoothDevice():
-    devices = await BleakScanner.discover(timeout=1)
+    devices: Sequence[BLEDevice] = await BleakScanner.discover(timeout=1)
 
     print("** Date Time: ", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), "**\n")
 
@@ -74,6 +78,7 @@ import requests
 import time
 import platform
 
+from typing import Sequence
 from bleak import BleakClient, BleakScanner
 from datetime import datetime
 from requests.structures import CaseInsensitiveDict
@@ -104,7 +109,7 @@ async def receiveNotification():
         await client.stop_notify(GLUCOSE_MEASUREMENT_UUID)
 
 async def findBluetoothDevice():
-    devices = await BleakScanner.discover(timeout=1)
+    devices: Sequence[BLEDevice] = await BleakScanner.discover(timeout=1)
 
     for device in devices:
         if device.address == GLUCOSE_DEVICE_ADDRESS:
