@@ -107,7 +107,7 @@ async def receiveNotification():
 
     async with BleakClient(GLUCOSE_DEVICE_ADDRESS) as client:
         await client.start_notify(GLUCOSE_MEASUREMENT_UUID, glucoseMeasurement)
-        await asyncio.sleep(60)
+        await asyncio.sleep(5.0)
         await client.stop_notify(GLUCOSE_MEASUREMENT_UUID)
 
 async def findBluetoothDevice():
